@@ -17,7 +17,7 @@ function makeNegative(num) {
     return -Math.abs(num);
 }
 
-//other possible solutions
+//other solutions
 function makeNegative(num) {
     return -Math.abs(num);
 }
