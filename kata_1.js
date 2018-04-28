@@ -20,7 +20,7 @@ function narcissistic( value ) {
     if(total === value){return true;} else {return false;}
 }
 
-//other solutions
+//other solution
 function narcissistic( value ) {
     return ('' + value).split('').reduce(function(p, c){
       return p + Math.pow(c, ('' + value).length)
