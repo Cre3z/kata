@@ -13,8 +13,21 @@
 
 // Error checking for text strings or other invalid inputs is not required, only valid integers will be passed into the function.
 
+//my solution
 function narcissistic( value ) {
     let num = value.toString().split(''); let total = 0;
     for (let int of num) {total += Math.pow(parseInt(int), num.length);}
     if(total === value){return true;} else {return false;}
+}
+
+//other solutions
+function narcissistic( value ) {
+    return ('' + value).split('').reduce(function(p, c){
+      return p + Math.pow(c, ('' + value).length)
+      }, 0) == value;
+}
+
+function narcissistic( value ) {
+    var power = (''+value).length;
+    return [...(''+value)].reduce((a,b)=>a+Math.pow(b,power),0) === value;
 }
