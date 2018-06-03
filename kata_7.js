@@ -1,21 +1,34 @@
-// You receive some random elements as a space-delimited string. Check if the elements are part of an ascending sequence of integers starting with 1, with an increment of 1 (e.g. 1, 2, 3, 4).
+// You have an array of numbers 1 through n (where 1 <= n <= 10). The array needs to be formatted correctly for the person reading the countdown of a spaceship launch.
 
-// Return:
+// Unfortunately, the person reading the countdown only knows how to read strings. After the array is sorted correctly make sure it's in a format he can understand.
 
-// 0 if the elements can form such a sequence, and no number is missing ("not broken", e.g. "1 2 4 3")
-// 1 if there are any non-numeric elements in the input ("invalid", e.g. "1 2 a")
-// n if the elements are part of such a sequence, but some numbers are missing, and n is the lowest of them ("broken", e.g. "1 2 4" or "1 5")
-// Examples
-// "1 2 3 4"  ==>  return 0, because the sequence is complete
+// Between each number should be a space and after the final number (n) should be the word 'liftoff!'
 
-// "1 2 4 3"  ==>  return 0, because the sequence is complete (order doesn't matter)
+// Example:
 
-// "2 1 3 a"  ==>  return 1, because it contains a non numerical character
-
-// "1 3 2 5"  ==>  return 4, because 4 is missing from the sequence
-
-// "1 5"      ==>  return 2, because the sequence is missing 2, 3, 4 and 2 is the lowest
+// Given
+// instructions = [8,1,10,2,7,9,6,3,4,5]
+// Should return
+// "10 9 8 7 6 5 4 3 2 1 liftoff!"
+// Given
+// instructions = [1,2,4,3,5]
+// Should return
+// "5 4 3 2 1 liftoff!"
 
 //my solution
+function liftoff(instructions){
+    instructions.sort((a, b) => a - b).reverse().push("liftoff!");
+    return instructions.join(" ");
+}
 
 //other solutions
+//1
+function liftoff(instructions){
+    return instructions.sort(function(a, b) {return b - a;}).join(' ') + ' liftoff!'
+}
+
+//2
+function liftoff(instructions) {
+    var countDown = instructions.sort((a, b) => b - a).join(' ');
+    return `${countDown} liftoff!`;
+}
